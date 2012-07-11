@@ -1,0 +1,23 @@
+{
+  "name": "debug-addon",
+  "fullName": "Add-on debugger",
+  "version": "0.1.0",
+  "description": "Basic debug template that renders a datasource as a basic list of items that can be selected for preview. The template calls the appropriate add-ons hooks with the content being rendered, making it possible to test add-on hooks with real data feeds.",
+  "keywords": [
+    "debug",
+    "add-on"
+   ],
+  "joshfire": {
+    "devonly": true,
+    "images": {
+      "small": "http://i.imgur.com/LJI5A.png",
+      "big": "http://i.imgur.com/x5NbC.png"
+    },
+    "startfile": "index.html",
+    "datasources": {
+      "main": {
+        "title": "Feed to render"
+      }
+    }
+  }
+}
