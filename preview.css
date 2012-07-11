@@ -86,7 +86,7 @@ h2 {
 }
 
 #preview {
-width:600px;
+max-width:600px;
 background-color: transparent;
 }
 
