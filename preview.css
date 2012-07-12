@@ -95,7 +95,6 @@ margin-bottom: 10px;
 
 }
 
-
 #preview h4,
 #preview .author,
 #preview .date {
@@ -149,3 +148,10 @@ overflow: hidden;
 #preview img {
   max-width: 120px;
 }
+
+#addons div h4 {
+  float: none;
+  width: auto;
+  padding-left: 0;
+}
+
