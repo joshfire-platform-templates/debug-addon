@@ -18,6 +18,10 @@
       "main": {
         "title": "Feed to render"
       }
-    }
+    },
+    "hooks": [
+      "list",
+      "item"
+    ]
   }
 }
