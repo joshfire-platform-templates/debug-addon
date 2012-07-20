@@ -34,7 +34,11 @@ var renderFeed = function () {
 var renderItem = function (idx) {
   listEl.innerHTML = '';
   addonsEl.innerHTML = '';
-  itemEl.innerHTML = formatItem(feed[idx]);
+
+  var res = '<ul>';
+  res += formatItemInList(feed[idx], idx);
+  res += '</ul>';
+  itemEl.innerHTML = res;
   currentData = feed[idx];
 
   addons = Joshfire.factory.getAddOns('item');
