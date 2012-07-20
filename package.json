@@ -21,7 +21,11 @@
     },
     "hooks": [
       "list",
-      "item"
+      "item",
+      "loaded",
+      "edit",
+      "share",
+      "like"
     ]
   }
 }

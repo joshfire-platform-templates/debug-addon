@@ -3,6 +3,7 @@ var itemEl = document.getElementById('item');
 var addonsEl = document.getElementById('addons');
 var datasource = Joshfire.factory.getDataSource('main');
 var feed = [];
+var currentData = null;
 
 /**
  * Renders the feed's list and triggers the "list" hook
@@ -16,6 +17,7 @@ var renderFeed = function () {
   }
   res += '</ul>';
   listEl.innerHTML = res;
+  currentData = feed;
 
   addons = Joshfire.factory.getAddOns('list');
   addons.render(addonsEl, {
@@ -33,6 +35,7 @@ var renderItem = function (idx) {
   listEl.innerHTML = '';
   addonsEl.innerHTML = '';
   itemEl.innerHTML = formatItem(feed[idx]);
+  currentData = feed[idx];
 
   addons = Joshfire.factory.getAddOns('item');
   addons.render(addonsEl, {
@@ -136,5 +139,27 @@ datasource.find({}, function (err, data) {
   // when the item is clicked
   itemEl.addEventListener('click', function (evt) {
     renderFeed();
+  });
+
+  // Listen to clicks on user intents
+  document.getElementById('intent-share').addEventListener('click', function (evt) {
+    var addons = Joshfire.factory.getAddOns('share');
+    addons.startActivity({
+      data: ((obj === Object(obj)) ? currentData.url : ''),
+      type: 'text/uri-list'
+    }, function (data) {
+      console.log('Intent "share" done', data);
+    }, function (err) {
+      console.log('Intent "share" err', err);
+    });
+  });
+
+  // Trigger the "loaded" hook
+  var addons = Joshfire.factory.getAddOns('loaded');
+  addons.render(addonsEl, {
+    data: null,
+    dataEl: null
+  }, function (err) {
+    console.log('loaded hook called, error:', err);
   });
 });
