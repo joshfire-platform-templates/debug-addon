@@ -154,6 +154,30 @@ datasource.find({}, function (err, data) {
     });
   });
 
+  document.getElementById('intent-edit').addEventListener('click', function (evt) {
+    var addons = Joshfire.factory.getAddOns('edit');
+    addons.startActivity({
+      data: currentData,
+      type: ((currentData === Object(currentData)) ? currentData['@type'] : '*/*')
+    }, function (data) {
+      console.log('Intent "edit" done', data);
+    }, function (err) {
+      console.log('Intent "edit" err', err);
+    });
+  });
+
+  document.getElementById('intent-like').addEventListener('click', function (evt) {
+    var addons = Joshfire.factory.getAddOns('like');
+    addons.startActivity({
+      data: ((currentData === Object(currentData)) ? currentData.url : ''),
+      type: 'text/uri-list'
+    }, function (data) {
+      console.log('Intent "like" done', data);
+    }, function (err) {
+      console.log('Intent "like" err', err);
+    });
+  });
+
   // Trigger the "loaded" hook
   var addons = Joshfire.factory.getAddOns('loaded');
   addons.render(addonsEl, {
