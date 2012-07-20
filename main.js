@@ -145,7 +145,7 @@ datasource.find({}, function (err, data) {
   document.getElementById('intent-share').addEventListener('click', function (evt) {
     var addons = Joshfire.factory.getAddOns('share');
     addons.startActivity({
-      data: ((currenData === Object(currenData)) ? currentData.url : ''),
+      data: ((currentData === Object(currentData)) ? currentData.url : ''),
       type: 'text/uri-list'
     }, function (data) {
       console.log('Intent "share" done', data);
